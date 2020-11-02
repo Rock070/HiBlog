@@ -1,0 +1,83 @@
+<!-- <?php
+    require('conn.php');
+    require('utilities.php');
+
+    session_start();
+
+    $username = NULL;
+
+    if(!empty($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        $user = getUserInfos($username);
+    }
+    
+
+    if(!empty($_GET['article_id'])) {
+        $article_id = $_GET['article_id'];
+    }
+
+    $sql = 
+    "SELECT ".
+        "U.nickname as nickname, ".
+        "A.article_id as article_id, ".
+        "A.type as type, ".
+        "A.title as title, ".
+        "A.content as content, ".
+        "A.create_at as create_at ".
+    "from rock070_blog_articles as A ".
+    "JOIN rock070_blog_users as U ".
+    "ON A.user_id = U.user_id ".
+    "WHERE article_id = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $article_id);
+        $result = $stmt->execute();
+
+
+        if(!$result){
+            die('error: ' . $conn->error);
+        }
+
+        $result = $stmt->get_result();
+
+
+
+?> -->
+
+<html>
+    <%- include('./template/header')%>
+<body>
+    <%- include('./template/navbar')%>
+        <header>
+            <div class="img">
+                <div class="article-infos">
+                    <div class="article-title"><%= article.title%></div>
+                    <div class="article-type"><%= article.type%></div>
+                    <div>Posted by <span class="article-host"><%= article.User.nickname%></span> on <span class="article-create-at"><%= article.createAt%></span> </div>
+                </div>
+            </div>
+        </header>
+            <section id='articles'>
+                <div class="article-list">
+                    <div class="article">
+                        <!-- <button class='article-btn-edit'>編輯</button> -->
+                        <div class="article-content">
+                            <%- article.content%>
+                        </div>
+                </div>
+                    
+                
+                </div>
+            </section>
+
+
+
+    <footer>
+        <div class="footer-copyright">Copyright © 2020 AboutMe All Rights Reserved.</div>
+    </footer>
+
+    
+
+
+</body>
+</html>

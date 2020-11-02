@@ -1,0 +1,125 @@
+<!-- <?php
+    // 大頭照設計
+
+    require('conn.php');
+    require('utilities.php');
+    session_start();
+    $username = NULL;
+    
+    if(!empty($_SESSION['username'])){
+        $username = $_SESSION['username'];
+        $user = getUserInfos($username);
+        $nickname = $user['nickname'];
+    }
+
+
+    $limit = 5;
+    $page = 1;
+    $offset = ($page - 1) * $limit;
+    
+
+    if(!empty($_GET['page'])) {
+        $page = $_GET['page']; 
+    } 
+
+
+
+    $sql = 
+        "SELECT ".
+            "U.nickname as nickname, ".
+            "A.article_id as article_id, ".
+            "A.type as type, ".
+            "A.title as title, ".
+            "A.content as content, ".
+            "A.create_at as create_at ".
+        "from rock070_blog_articles as A ".
+        "JOIN rock070_blog_users as U ".
+        "ON A.user_id = U.user_id ". 
+        "ORDER BY article_id desc ". 
+        "limit ? ".
+        "OFFSET ?";
+
+
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ss', $limit, $offser);
+        $result = $stmt->execute();
+
+        if(!$result){
+            die('error: ' . $conn->error);
+        }
+
+        $result = $stmt->get_result();
+
+
+  
+?> -->
+
+<html>
+    <%- include('./template/header')%>
+    <body>
+        <%- include('./template/navbar')%>
+    <header>
+        <div class="img">
+            <h3>about Me</h3>
+            <h4>Publish and share story about yourself</h4>
+                <a href='./register.php'><span>Get started</span></a>
+
+        </div>
+    </header>
+    <section id='body'>
+        <section id='articles'>
+            <% console.log(articles) %>
+            <% for(article of articles) { %>
+                <div class="article-list">
+                        <a href="/article/<%= article.id%>">
+                            <div class="article">
+                                <div class="article-type"><%= article.type %></div>
+                                <div class="article-title"><%= article.title%></div>
+                                <div class="article-content"> 
+                                <%= 2 > 3 ? "1":"2"%>
+                                <%= article.content.length%>
+                                <%= article.content.length < 40 ? article.content : article.content.substr(0 , 30) + " ......" %>
+                                
+                                </div>
+                                <div class="article-host"><%= article.User.nickname %></div>
+                                <div class="article-create-at"><%= article.createAt %></div>
+                                <hr>
+                            </div>
+                        </a>
+                </div>
+            <% } %>
+        </section>
+        <section id="popular-article">
+            <h3>Popular on AboutMe</h3>
+            <hr>
+            <div class="popular-article-list">
+                <div class="popular-article">
+                    <div class="popular-article-id">01</div>
+                    <div class="popular-article-infos">
+                        <div class="popular-article-title">台南之旅心得</div>
+                        <div class="popular-article-host">Rock Wang</div>
+                        <div class="popular-article-create-at">2010/12/02 10:20:10</div>
+                    </div>
+                    
+                </div>
+
+                <div class="popular-article">
+                    <div class="popular-article-id">01</div>
+                    <div class="popular-article-infos">
+                        <div class="popular-article-title">台南之旅心得</div>
+                        <div class="popular-article-host">Rock Wang</div>
+                        <div class="popular-article-create-at">2010/12/02 10:20:10</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    
+
+    <%- include('./template/footer')%>
+
+
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<!-- <?php
+    require('conn.php');
+    
+
+   if(!empty($_GET['errMsg'])){
+       if($_GET['errMsg'] === '1') {
+            echo "<script>alert('請填寫完整資料！')</script>";
+       }
+       if($_GET['errMsg'] === '2') {
+        echo "<script>alert('帳號或密碼輸入錯誤！')</script>";
+   }
+
+   } -->
+<!-- ?> -->
+<!DOCTYPE html>
+<html>
+
+ <!-- header -->
+
+<%- include('./template/header')%>
+
+
+<body>
+    <%- include('./template/navbar')%>
+    <% if(errMessage.length > 0) { %>
+        <div class="alert alert-danger" style="text-align: center;" role="alert">
+            <%= errMessage %>
+        </div>
+    <% } %> 
+    <section id="edit-article">
+        <h3>發表文章</h3>
+        <form action="./articleAdd" method='POST'>
+            <input name='title'  placeholder='請輸入文章標題'>
+            <input name='type' placeholder='請輸入文章分類'>
+            <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+            <textarea name="editor1"></textarea>
+            <script>CKEDITOR.replace("editor1");</script>
+            <input type="submit">
+        </form>
+    </section>
+<%- include('./template/footer')%>
+    
+
+
+</body>
+</html>

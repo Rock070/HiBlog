@@ -1,0 +1,71 @@
+<!-- <?php
+    require('conn.php');
+    
+
+   if(!empty($_GET['errMsg'])){
+       if($_GET['errMsg'] === '1') {
+            echo "<script>alert('請填寫完整資料！')</script>";
+       }
+       if($_GET['errMsg'] === '2') {
+            echo "<script>alert('兩次密碼不相同！')</script>";
+        }
+
+        if($_GET['errMsg'] === '3') {
+            echo "<script>alert('此帳號已被註冊！')</script>";
+        }
+
+   }
+?> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<%- include('../template/header')%>
+<body>
+    <%- include('../template/navbar')%>
+    
+    <% if(errMessage.length > 0) { %>
+        <div class="alert alert-danger" style="text-align: center;" role="alert">
+            <%= errMessage %>
+        </div>
+    <% } %> 
+    
+    <section id="register">
+        
+    
+        
+        <h3>註冊</h3>
+        <form action="./register" method='POST'>
+                <div class="nickname">
+                    <label for="nickname">名稱：</label>
+                    <input type="text" name='nickname' id='nickname'>
+                </div>
+                <div class="username"> 
+                    <label for="username">帳號：</label>
+                    <input type="text" name='username' id='username'> 
+                </div>
+                <div class="password">  
+                    <label for="password">密碼：</label>
+                    <input type="password" name='password' id='password'>
+                </div>
+                <div class="password-2"> 
+                    <label for="password_2">再輸入一次密碼：</label>
+                    <input type="password" name='password_2' id='password_2'>
+                </div>
+               
+               
+                
+                <input type="submit" class='btn-submit'>
+
+
+        </form>
+    </section>
+    
+<%- include('../template/footer')%>
+
+
+</body>
+
+
+</html>

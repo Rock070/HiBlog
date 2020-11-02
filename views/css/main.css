@@ -1,0 +1,433 @@
+* {
+    position: relative;
+    /* border: 1px solid #000; */
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+
+nav .nav {
+    text-align: center;
+    padding: 5px 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .nav .nav-left a {
+        padding: 0;
+        text-decoration: none;
+        color: #787878;
+}
+    
+nav .nav .nav-left a:focus {
+        color: #787878;
+        text-decoration: none;
+}
+nav .nav .nav-right a {
+    text-decoration: none;
+    color: #787878;
+}
+
+nav .nav .nav-right a:focus {
+    color: #787878;
+    text-decoration: none;
+}
+
+
+nav .nav span {
+    cursor: pointer;
+    padding: 10px;
+    color: #787878;
+}
+
+nav .nav .nav-left {
+    display: flex;  
+    align-items: center;
+
+}
+
+nav .nav .nav-right {
+    display: flex;  
+    align-items: center;
+
+}
+
+nav .nav .nav-left h2{
+    margin-right: 10px;
+}
+
+header .img {
+    height: 450px;
+    background-image: url('./cover.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    /* z-index: -1; */
+    color: white;
+}
+header .img::before {
+    content: " ";
+    display: block;
+    height: 450px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    pointer-events: none;
+
+}   
+
+header .img h3, header .img h4, header .img a { 
+    position: absolute; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 5;
+}
+
+header .img h3 {
+    font-size: 60px;
+    top: 15%;
+}
+
+header .img h4 {
+    font-size: 18px;
+    top: 45%;
+}
+
+header .img a  {
+    color: white;
+    background-color: #7aB22F;
+    padding: 10px 15px;
+    top: 70%;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+header .img a span {
+    color: white;
+    background-color: #7aB22F;
+    top: 70%;
+    cursor: pointer;
+}
+
+
+header .img .article-infos {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+}
+
+
+
+header .img .article-infos .article-title {
+    font-weight: bold;
+    font-size: 60px;
+    padding: 0px 0px;
+    transform: translateY(-10%);
+}
+header .img .article-infos .article-type {
+    display: inline;
+    padding: 2px 7px;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    background-color: white;
+    border-radius: 6px;
+    text-align: center;
+    transform: translate(10%, -20%);
+}
+
+header .img .article-infos .article-type+div{
+    transform: translateY(100%);
+}
+
+header .img .article-infos div .article-host {
+    /* margin-top: 10px; */
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+
+header .img .article-infos div .article-create-at {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+/*  index.ejs */
+section#body {
+    display: flex;
+    margin: 40px;
+    /* justify-content: space-between; */
+}
+
+section#articles {
+    width: 60%;
+    padding: 20px 60px;
+}
+
+
+section#articles .article-list .article .article-content {
+    padding-top: 60px;
+    white-space: pre-line;
+    word-break: break-word;
+    line-height: 1.5;
+    padding-bottom: 15px;
+    padding: 20px;
+}
+
+ section#articles .article-list a {
+    text-decoration: none;
+    color: #787878;
+}
+
+ section#articles .article-list a:focus {
+    color: #787878;
+    text-decoration: none;
+}
+
+ section#articles .article-list a .article {
+    padding: 10px 50px;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+    /* transition: 1.2s; */
+}
+
+ section#articles .article-list a .article hr {
+    padding: 10px 0px;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+
+
+ section#articles .article-list a .article .article-type {
+    font-size: 14px;
+    color: #787878;  
+}
+
+ section#articles .article-list a .article .article-title {
+    font-weight: bold;
+    color: black;
+    font-size: 24px;
+    padding: 5px 0px;
+}
+
+
+
+ section#articles .article-list a .article .article-content {
+    color: #787878;
+    white-space: pre-line;
+    word-break: break-word;
+    line-height: 1.5;
+    padding-bottom: 15px;
+}
+
+ section#articles .article-list a .article .article-create-at {
+    color: #787878;
+}
+
+ section#articles .article-list a .article .article-host {
+    /* margin-top: 10px; */
+    color: black;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+
+ section#popular-article{
+    width: 20%;
+    
+}
+
+ section#popular-article hr{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+ section#popular-article .popular-article-list {
+    margin-top: 10px;
+}
+ section#popular-article .popular-article-list .popular-article {
+    display: flex;
+    font-weight: 400;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+ section#popular-article .popular-article-list .popular-article:hover {
+    
+    transform: translateY(-2%);
+}
+
+ section#popular-article .popular-article-list .popular-article .popular-article-id {
+    color: rgba(0, 0, 0, 0.15);
+    font-size: 36px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: top;
+
+}
+ section#popular-article .popular-article-list .popular-article .popular-article-infos {
+    line-height: 1.5;
+}
+
+ section#popular-article .popular-article-list .popular-article .popular-article-infos .popular-article-title {
+    font-weight: bold;
+    font-size: 24px;
+}
+ section#popular-article .popular-article-list .popular-article .popular-article-infos {
+    line-height: 2;
+}
+
+ section#popular-article .popular-article-list .popular-article .popular-article-infos .popular-article-host {
+    font-size: 12px;
+}
+
+
+ section#popular-article .popular-article-list .popular-article .popular-article-infos .popular-article-create-at {
+    color: rgba(0,0,0,.5);
+}
+
+
+/*** article ***/
+
+/* article add */
+
+section#edit-article {
+    min-height: calc(90vh - 64px);
+    padding: 0 150px;
+    text-align: center;
+}
+
+section#edit-article input {
+    width: 100%;
+    display: block;
+    padding: 10px 7px;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+/* section login, register */
+
+
+section#login, section#register{
+    padding: 0px 50px 0px 0px;
+    margin: 50px 300px;   
+    min-height: calc(80vh - 70px);
+
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+}
+section#register{
+    padding: 0px 130px 0px 0px;
+}
+
+section#login form div, section#register form div {
+    margin-bottom: 5px;
+
+}
+
+section#login h3, section#register h3 {
+    font-size: 48px;
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+}
+
+section#login form .btn-submit, section#register form .btn-submit {
+    position: absolute;
+    padding: 5px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+
+}
+section#login form .btn-submit{
+    left: 42%;
+    bottom: -80%;
+}
+
+section#register form .btn-submit {
+    left: 55%;
+    bottom: -60%;
+}
+
+
+
+section#admin {
+    width: 80%;
+    min-height: calc(80vh - 10px);
+    text-align: center;
+    margin: 40px auto 0px auto;
+    
+}
+
+section#admin .article-list a {
+    color: black;
+    text-decoration: none;
+
+}
+
+section#admin .article-list a:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
+section#admin .article-list .article .article-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+
+section#admin .article-list  .article .article-card .left h3 {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+section#admin .article-list  .article .article-card .right {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+
+}
+
+section#admin .article-list  .article .article-card .right .article-create-at {
+    color: #787878;
+    padding: 0px 20px;
+
+}
+
+section#admin .article-list  .article .article-card .right .article-btn {
+    color: #787878;
+    padding: 0px 15px;
+    border: 1px solid #787878;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+section#admin .article-list .article  hr {
+    border: none;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+
+footer {
+    background: #323232;
+    color: white;
+    text-align: center;
+    padding: 10px 0px; 
+
+}

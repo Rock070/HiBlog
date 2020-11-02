@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./template/header')%>
+
+<body>
+    <%- include('./template/navbar')%>
+    <section id="edit-article">
+        <h3>編輯文章</h3>
+        <form action="../articleEdit/<%= article.id%>" method='POST'>
+            <input name='title'  placeholder='請輸入文章標題' value='<%= article.title%>'>
+            <input name='type' placeholder='請輸入文章分類' value='<%= article.type%>'>
+            <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+            <textarea name="editor1"><%= article.content %></textarea>
+            <script>CKEDITOR.replace("editor1");</script>
+            <input type="submit">
+        </form>
+    </section>
+<%- include('./template/footer')%>
+
+</body>
+</html>

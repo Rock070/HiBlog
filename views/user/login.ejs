@@ -1,0 +1,56 @@
+<!-- <?php
+    require('conn.php');
+    
+
+   if(!empty($_GET['errMsg'])){
+       if($_GET['errMsg'] === '1') {
+            echo "<script>alert('請填寫完整資料！')</script>";
+       }
+       if($_GET['errMsg'] === '2') {
+        echo "<script>alert('帳號或密碼輸入錯誤！')</script>";
+   }
+
+   } -->
+<!-- ?> -->
+<!DOCTYPE html>
+<html>
+
+ <!-- header -->
+
+<%- include('../template/header')%>
+
+
+<body>
+    <%- include('../template/navbar')%>
+    <% if(errMessage.length > 0) { %>
+        <div class="alert alert-danger" style="text-align: center;" role="alert">
+            <%= errMessage %>
+        </div>
+    <% } %> 
+    <section id="login">
+        <h3>登入</h3>
+        <form action="/login" method='POST'>
+                <div class="usernamename"> 
+                    <label for="username">帳號：</label>
+                    <input type="text" name='username' id='username'> 
+                </div>
+                <div class="passwordname">  
+                    <label for="password">密碼：</label>
+                    <input type="password" name='password' id='password'>
+                </div>
+   
+               
+               
+                
+                <input type="submit" class='btn-submit'>
+
+
+        </form>
+    </section>
+    
+<%- include('../template/footer')%>
+    
+
+
+</body>
+</html>

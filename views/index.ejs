@@ -1,0 +1,66 @@
+
+<html>
+    <%- include('./template/header')%>
+<body>
+    <%- include('./template/navbar')%>
+    <header>
+        <div class="img">
+            <h3>Hello</h3>
+            <h4>Publish and share story about life</h4>
+            <% if(!nickname) { %>
+                <a href='./register'><span>Get started</span></a>
+            <% } %>
+        </div>
+    </header>
+    <section id='body'>
+        <section id='articles'>
+            <div class="article-list">
+                <h3 style="left: 6%;">Latest Five on AboutMe</h3>
+                <hr style="width: 88%; ">
+            <% for(article of articles) { %>
+                <a href="/article/<%= article.id%>" >
+                    <div class="article">
+                        <div class="article-type"><%= article.type %></div>
+                        <div class="article-title"><%= article.title %></div>
+                        <div class="article-content">
+                            <%- article.content.length < 40 ? article.content : article.content.substr(0 , 30) + " ......" %>
+                        </div>
+                        <div class="article-host"><%= article.User.nickname %></div>
+                        <div class="article-create-at"><%= article.createAt %></div>
+                        <hr>
+                    </div>
+                </a>
+            <% } %>
+            </div>
+        </section>
+        <section id="popular-article">
+            <h3>Popular on AboutMe</h3>
+            <hr>
+            <div class="popular-article-list">
+                <div class="popular-article">
+                    <div class="popular-article-id">01</div>
+                    <div class="popular-article-infos">
+                        <div class="popular-article-title">台南之旅心得</div>
+                        <div class="popular-article-host">Rock Wang</div>
+                        <div class="popular-article-create-at">2010/12/02 10:20:10</div>
+                    </div>
+                    
+                </div>
+
+                <div class="popular-article">
+                    <div class="popular-article-id">01</div>
+                    <div class="popular-article-infos">
+                        <div class="popular-article-title">台南之旅心得</div>
+                        <div class="popular-article-host">Rock Wang</div>
+                        <div class="popular-article-create-at">2010/12/02 10:20:10</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <%- include('./template/footer')%>
+
+
+</body>
+</html>
+

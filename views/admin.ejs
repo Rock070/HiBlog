@@ -1,0 +1,83 @@
+<!-- <?php
+    require('conn.php');
+    require('utilities.php');
+
+    session_start();
+
+    $username = NULL;
+
+    if(!empty($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        $user = getUserInfos($username);
+    }
+    
+
+    if(!empty($_GET['article_id'])) {
+        $article_id = $_GET['article_id'];
+    }
+
+    $sql = 
+    "SELECT ".
+        "U.nickname as nickname, ".
+        "A.article_id as article_id, ".
+        "A.type as type, ".
+        "A.title as title, ".
+        "A.content as content, ".
+        "A.create_at as create_at ".
+    "from rock070_blog_articles as A ".
+    "JOIN rock070_blog_users as U ".
+    "ON A.user_id = U.user_id ".
+    "WHERE article_id = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $article_id);
+        $result = $stmt->execute();
+
+
+        if(!$result){
+            die('error: ' . $conn->error);
+        }
+
+        $result = $stmt->get_result();
+
+
+
+?> -->
+
+<html>
+    <%- include('./template/header')%>
+<body>
+    <%- include('./template/navbar')%>
+        <section id='admin'>
+            <h2>管理文章</h2>
+            <div class="article-list">
+                <% for(article of articles) { %>
+                    <% if(!article.is_deleted) { %>
+                    <a href="article/<%= article.id%>">   
+                        <div class="article">
+                            <div class="article-card">
+                                <div class="left">
+                                    <h3><%= article.title %></h3>
+                                </div>
+                                <div class="right">
+                                    <div class="article-create-at"><%= article.createAt %></div>
+                                    <a href='articleEdit/<%= article.id %>'><div class="article-btn">編輯</div></a>
+                                    <a href="articleDelete/<%= article.id %>"><div class="article-btn">刪除</div></a>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </a>
+                    <% } %>
+                <% } %>
+            </div>
+                
+        </section>
+
+        <%- include('./template/footer')%>
+
+    
+
+
+</body>
+</html>
